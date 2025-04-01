@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CODEAPLHA internship - Age Caluculator - task 1 by mitesh jimbhal</title>
+    <! -- css file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="calculator">
+            <h1>CODE ALPHA <br><span>Age Calculator</span></h1>
+            <label for = "dob">Enter Your Date of Birth:</label>
+            <input type="date" id="dob">
+            <button onclick="calculateAge()">Calculate Age</button>
+            <p id="result"></p>
+        </div> 
+    </div>
+    <script>
+        function calculateAge() {
+            let dob = document.getElementById('dob').value;
+            if (!dob) {
+                document.getElementById('result').innerText = "Please enter your date of birth.";
+                return;
+            }
+            let birthDate = new Date(dob);
+            let today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            let monthDiff = today.getMonth() - birthDate.getMonth();
+            let dayDiff = today.getDate() - birthDate.getDate();
+
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+            document.getElementById('result').innerText = `Your age is ${age} years.`;
+        }
+    </script>
+</body>
+</html>
